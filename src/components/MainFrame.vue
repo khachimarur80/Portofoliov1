@@ -1,6 +1,5 @@
 <template>
-  <v-container>
-    <div class="frame odd" :class="odd ? 'odd frame' : 'even frame'">
+  <div class="even frame pt-3 pl-3 pr-3">
     <div class="frame-inner-left">
       <v-card width="100%" height="100%" flat>
         <v-card-title>
@@ -23,8 +22,7 @@
         {{ data.images }}
       </v-card>
     </div>
-    </div>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -35,9 +33,6 @@ export default {
   props: {
     data : {
       required: true,
-    },
-    odd: {
-      required: true,
     }
   },
 }
@@ -46,7 +41,7 @@ export default {
 <style>
   .frame {
     display: flex;
-    gap: 20px;
+    gap: 12px;
     width: 100%;
   }
   .odd {
@@ -57,5 +52,6 @@ export default {
   }
   .frame-inner-left, .frame-inner-right {
     width: 50% !important;
+    min-height: 200px;
   }
 </style>

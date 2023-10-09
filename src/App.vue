@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <v-app-bar elevation="0">
+    <v-app-bar elevation="0" color="teal">
     </v-app-bar>
     <v-main>
-      <MainFrame v-for="(point, i) in mainPoints" :key="i" :data="point" :odd="i%2!=0"/>
+      <MainFrame v-for="(point, i) in mainPoints" :key="i" :data="point"/>
     </v-main>
   </v-app>
 </template>
@@ -53,6 +53,5 @@ export default {
   }
   .frame:nth-child(2n) {
     flex-direction: row-reverse !important;
-    outline: 1px solid red !important;
   }
 </style>
