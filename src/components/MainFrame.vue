@@ -1,16 +1,18 @@
 <template>
   <div class="even frame pt-3 pl-3 pr-3">
     <div class="frame-inner-left">
-      <v-card width="100%" height="100%" flat>
+      <v-card width="100%" height="100%" flat class="d-flex flex-column">
         <v-card-title>
           <div class="text-h5">
             {{ data.title }}
           </div>
         </v-card-title>
         <v-card-text>
+          <div class="text-body-1">
             {{ data.text }}
+          </div>
         </v-card-text>
-        <v-card-actions>
+        <v-card-actions class="align-self-end">
           <v-btn variant="outlined">
             See more
           </v-btn>
@@ -19,7 +21,8 @@
     </div>
     <div class="frame-inner-right">
       <v-card  width="100%" height="100%" flat>
-        {{ data.images }}
+        <v-img v-for="(image, i) in data.images" :key="i" :src="image">
+        </v-img>
       </v-card>
     </div>
   </div>

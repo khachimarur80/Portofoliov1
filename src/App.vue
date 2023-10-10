@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar elevation="0" color="teal">
     </v-app-bar>
-    <v-main>
+    <v-main class="overfow-auto">
       <MainFrame v-for="(point, i) in mainPoints" :key="i" :data="point"/>
     </v-main>
   </v-app>
@@ -23,12 +23,15 @@ export default {
       {
         'title' : 'Kei Rodríguez Hachimaru',
         'text' : 'Hey, I\'m Kei.',
-        'images' : [],
+        'images' : [
+          require('@/assets/images/Logo.png')
+        ],
       },
       {
         'title' : 'About Me',
-        'text' : 'Hey, I\'m Kei.',
-        'images' : [],
+        'text' : 'I\'m a first year CS student who lives in Madrid. I enjoy playing the violin, various sports, and of course, coding. I love building and learning stuff!',
+        'images' : [
+        ],
       },
       {
         'title' : 'My Skills',
