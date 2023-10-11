@@ -1,11 +1,30 @@
 <template>
-  <v-app>
+  <v-app >
+    <div id="blob">
+    </div>
+    <div id="blur"></div>
+
     <v-app-bar elevation="0" color="teal">
 
     </v-app-bar>
     <v-main class="pb-10 px-2" @scroll="handleScroll" id="main">
+      <div id="banner">
+        <div class="banner-contents">
+          <div v-for="(string, i) in charStrings" :key="i" class="string">
+            <span class="fill-string">
+              {{ string.slice(0, 6)  }}
+            </span>
+            <span>
+              {{ string[6] }}
+            </span>
+            <span class="fill-string">
+              {{ string.slice(7, -1) }}
+            </span>
+          </div>
+        </div>
+      </div>
       <div class="text-h4 pa-3" id="kei">
-        Kei Rodríguez Hachimaru
+        About Me
       </div>
       <MainFrame v-for="(point, i) in aboutMe" :key="i" :data="point" :isOdd="i%2==0" :oneImage="point.images.length==1" ref="frames" :data-title="point.title"/>
       <div class="text-h4 pa-3" id="projects">
@@ -104,10 +123,19 @@ export default {
   },
 
   data: () => ({
+    greeting: [
+      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+      'H', 'e', 'y', ' ','I', '\'' ,'m', ' ', 'K', 'e', 'i', 
+      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
+      ],
+    waitTime: 0,
+    charStrings: [],
     aboutMe: [
       {
         'show' : false,
-        'title' : 'About Me',
+        'title' : 'What I am',
         'text' : 'I\'m a first year CS student who lives in Madrid. I enjoy playing the violin, various sports, and of course, coding. I love building and learning stuff!',
         'images' : [
           require('@/assets/images/Retiro.jpg')
@@ -152,10 +180,16 @@ export default {
   }),
 
   methods: {
+    moveBlob(event) {
+      let blob = document.getElementById('blob')
+      blob.animate({
+        left: event.x + 'px',
+        top: event.y + 'px'
+      }, {duration: 3000, fill: 'forwards'})
+    },
     submitForm() {
       // You can handle form submission logic here
       // Access form data via this.formData
-      console.log(this.formData);
       // You can use Vue resource or Axios to send data to the server
       // Example using Axios:
       // axios.post('/your-api-endpoint', this.formData)
@@ -190,10 +224,64 @@ export default {
       mainElement.scrollTo({ top: 0, behavior: 'smooth' });
     },
   },
+  mounted() {
+    const interval = setInterval(()=>{
+      let flag = true
+      for (let i=0; i<this.charStrings.length; i++) {
+        if (this.charStrings[i][6]!=this.greeting[i]) {
+          this.charStrings[i] = this.charStrings[i].substring(1);  
+          flag = false
+        }
+      }
+      if (flag) {
+        clearInterval(interval)
+      }
+    }, 70)
+    document.documentElement.style.setProperty('--fade-time', .03*this.waitTime+'s');
+  },
+  created() {
+    document.addEventListener('mousemove', this.moveBlob)
+
+    let charStrings = []
+    let indexes = []
+
+    for (let j=0; j<this.greeting.length; j++) {
+      let charString = '';
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+      for (let i = 0; i < 70; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        const randomChar = characters.charAt(randomIndex);
+        charString += randomChar;
+      }
+
+      const charToInsert = this.greeting[j];
+      let randomIndex;
+
+      if (charToInsert==' ') {
+        randomIndex = Math.floor(Math.random() * (50 - 20 + 1) + 20) - 10;
+      }
+      else {
+        randomIndex = Math.floor(Math.random() * (50 - 40 + 1) + 40);
+      }
+
+      charString = charString.slice(0, randomIndex) + charToInsert + charString.slice(randomIndex);
+
+      indexes.push(randomIndex)
+      charStrings.push(charString)
+    }
+
+    this.charStrings = charStrings
+
+    this.waitTime = Math.max(...indexes) - 6
+  }
 }
 </script>
 
 <style>
+  :root {
+    --fade-time: 3s;
+  }
   body, html {
     height: 100vh;
     width: 100h;
@@ -208,14 +296,99 @@ export default {
     height: 100vh;
     width: 100%;
     overflow: scroll;
+    position: absolute;
+    z-index: 3;
+  }
+  #banner {
+    height: 230px;
+    width: calc(100% - 80px);
+    display: flex;
+    color: hsl(114, 100%, 50%);
+    overflow: hidden;
+    background: #020202;
+    box-shadow: 0px 0px 5px 10px #020202;
+    margin: 40px;
+    border-radius: 20px;
+  }
+  .banner-contents {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+    animation: fadeMessage var(--fade-time) forwards;
+  }
+  .string {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    height: fit-content;
+    padding: 0px;
+    margin-left: -5px;
+    margin-right: -5px;
+    transform: translateY(-10px);
+    line-height: 20px;
   }
   .scroll-to-top {
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     transition: opacity 0.3s ease-in-out;
     opacity: 0.7;
     z-index: 1000;
+  }
+  .fill-string {
+    opacity: .8;
+    animation: fadeLetters var(--fade-time) forwards;
+  }
+  @keyframes fadeLetters {
+    from {
+      opacity: .8;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes fadeMessage {
+    from {
+      transform: scale(10);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  #blob {
+    height: 34vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(
+      aquamarine,
+      teal
+    );
+    animation: blobAnimation 10s infinite;
+    opacity: 0.8;
+  }
+  #blur {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(200px);
+  }
+  @keyframes blobAnimation {
+    from {
+      rotate: 0deg;
+    }
+    50% {
+      scale: 1 1.5;
+    }
+    to {
+      rotage: 360deg;
+    }
   }
   @media screen and (max-width: 600px) {
     #contact-form {

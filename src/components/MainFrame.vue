@@ -57,9 +57,6 @@ export default {
     oneImage: {
       required: true,
     },
-    showFrame: {
-      required: true
-    }
   },
 }
 </script>
@@ -83,7 +80,7 @@ export default {
     transform: translateX(100%);
   }
   .show-frame {
-    transform: translateX(0) !important;
+    transform: translateX(0);
     opacity: 1 !important;
   }
   .frame-inner-left, .frame-inner-right {
