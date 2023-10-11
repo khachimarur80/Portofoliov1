@@ -14,7 +14,7 @@
             <span class="fill-string">
               {{ string.slice(0, 6)  }}
             </span>
-            <span>
+            <span class="main-string">
               {{ string[6] }}
             </span>
             <span class="fill-string">
@@ -237,7 +237,7 @@ export default {
         clearInterval(interval)
       }
     }, 70)
-    document.documentElement.style.setProperty('--fade-time', .03*this.waitTime+'s');
+    document.documentElement.style.setProperty('--fade-time', .03*this.waitTime/.5+'s');
   },
   created() {
     document.addEventListener('mousemove', this.moveBlob)
@@ -249,7 +249,7 @@ export default {
       let charString = '';
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-      for (let i = 0; i < 70; i++) {
+      for (let i = 0; i < 40; i++) {
         const randomIndex = Math.floor(Math.random() * characters.length);
         const randomChar = characters.charAt(randomIndex);
         charString += randomChar;
@@ -259,10 +259,10 @@ export default {
       let randomIndex;
 
       if (charToInsert==' ') {
-        randomIndex = Math.floor(Math.random() * (50 - 20 + 1) + 20) - 10;
+        randomIndex = Math.floor(Math.random() * (30 - 20 + 1) + 20) - 5;
       }
       else {
-        randomIndex = Math.floor(Math.random() * (50 - 40 + 1) + 40);
+        randomIndex = Math.floor(Math.random() * (30 - 20 + 1) + 20);
       }
 
       charString = charString.slice(0, randomIndex) + charToInsert + charString.slice(randomIndex);
@@ -301,14 +301,13 @@ export default {
   }
   #banner {
     height: 230px;
-    width: calc(100% - 80px);
+    width: 100%;
     display: flex;
-    color: hsl(114, 100%, 50%);
+    color: aquamarine;
     overflow: hidden;
-    background: #020202;
-    box-shadow: 0px 0px 5px 10px #020202;
-    margin: 40px;
-    border-radius: 20px;
+    background: rgba(0,0,0,.8);
+    box-shadow: 0px 0px 80px 80px rgba(0,0,0,.8);
+    margin-bottom: 80px;
   }
   .banner-contents {
     flex: 1;
@@ -323,11 +322,11 @@ export default {
     writing-mode: vertical-rl;
     text-orientation: upright;
     height: fit-content;
+    width: fit-content;
     padding: 0px;
-    margin-left: -5px;
-    margin-right: -5px;
+    margin-left: -10px;
+    margin-right: -10px;
     transform: translateY(-10px);
-    line-height: 20px;
   }
   .scroll-to-top {
     position: fixed;
@@ -338,15 +337,32 @@ export default {
     z-index: 1000;
   }
   .fill-string {
-    opacity: .8;
+    opacity: 1;
     animation: fadeLetters var(--fade-time) forwards;
+  }
+  .main-string {
+    font-size: 28px;
+    animation-delay: var(--fade-time);
+    animation: showLetters 1s forwards;
   }
   @keyframes fadeLetters {
     from {
+      opacity: 1;
+    }
+    75% {
       opacity: .8;
     }
     to {
       opacity: 0;
+    }
+  }
+  @keyframes showLetters {
+    from {
+      font-size: 28px;
+    }
+    to {
+      font-size: 40px;
+      transform: translateY(-20px);
     }
   }
   @keyframes fadeMessage {
@@ -354,7 +370,7 @@ export default {
       transform: scale(10);
     }
     to {
-      transform: scale(1);
+      transform: scale();
     }
   }
   #blob {
