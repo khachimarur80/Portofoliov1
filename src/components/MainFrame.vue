@@ -70,7 +70,17 @@ export default {
     width: 100%;
     opacity: 0;
     transition: opacity 0.5s, transform 0.5s;
+    height: 300px;
   }
+  .frame-inner-left, .frame-inner-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100% !important;
+  }
+
   .odd {
     flex-direction: row-reverse;
     transform: translateX(-100%);
@@ -83,17 +93,13 @@ export default {
     transform: translateX(0);
     opacity: 1 !important;
   }
-  .frame-inner-left, .frame-inner-right {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 
   @media screen and (max-width: 600px) {
     .frame {
       max-height: 600px;
+    }
+    .frame-inner-left, .frame-inner-right {
+      width: 100%;
     }
     .one-image.odd {
       flex-direction: column-reverse;
@@ -101,23 +107,17 @@ export default {
     .one-image.even {
       flex-direction: column;
     }
-
-
-    .frame-inner-left, .frame-inner-right {
-      width: 100%;
-      height: 210px;
-    }
   }
 
   @media screen and (min-width: 601px) and (max-width: 1024px) {
     .frame {
-      max-height: 250px;
+      max-height: 300px;
     }
   }
 
   @media screen and (min-width: 1025px) {
     .frame {
-      max-height: 300px;
+      max-height: 350px;
     }
   }
 </style>

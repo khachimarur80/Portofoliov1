@@ -30,6 +30,7 @@
       <div class="text-h4 pa-3" id="projects">
         Projects
       </div>
+      <MainFrame v-for="(point, i) in myProjects" :key="i" :data="point" :isOdd="i%2==0" :oneImage="point.images.length==1" ref="frames" :data-title="point.title"/>
       <div class="text-h4 pa-3" id="my-github">
         My GitHub
       </div>
@@ -44,7 +45,7 @@
         Contact
       </div>
       <v-form id="contact-form" @submit.prevent="submitForm">
-        <v-card width="100%" height="100%" flat class="d-flex flex-column pa-3">
+        <v-card width="100%" height="100%" max-width="600" flat class="d-flex flex-column pa-3">
           <input type="hidden" name="contact_number" v-model="formData.contact_number">
           <v-row>
             <v-col cols="12">
@@ -88,9 +89,8 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="10">
-            </v-col>
-            <v-col cols="2">
+            <v-col cols="12" class="d-flex">
+              <v-spacer></v-spacer>
               <v-btn type="submit" color="teal-lighten-2" variant="outlined">Send</v-btn>
             </v-col>
           </v-row>
@@ -124,11 +124,7 @@ export default {
 
   data: () => ({
     greeting: [
-      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       'H', 'e', 'y', ' ','I', '\'' ,'m', ' ', 'K', 'e', 'i', 
-      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-      ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       ],
     waitTime: 0,
     charStrings: [],
@@ -157,6 +153,40 @@ export default {
           require('@/assets/images/electron-original.svg'),
         ],
       }
+    ],
+    myProjects: [
+      {
+        'show' : false,
+        'title' : 'My projects',
+        'text' : 'Here are 3 of my big projects. Feel free to check them on github. I also have smaller fun projects, click "See More" if you want to see them :D',
+        'images' : [
+          require('@/assets/images/Logo.png')
+        ],
+      },
+      {
+        'show' : false,
+        'title' : 'Luhmann',
+        'text' : 'It is a platform where people can share their knowledge and work together. Data is stored in a tree-node, where bigger concepts include smaller ones. One cool feature is that uses WebSocket Technology to work simultaneously.',
+        'images' : [
+          require('@/assets/images/Luhmann.png')
+        ],
+      },
+      {
+        'show' : false,
+        'title' : 'Diamond',
+        'text' : 'Simple, yet effective text editor. A simple text editor for your markdown, with WYSWYG. It is an "Obsidian" copy.',
+        'images' : [
+          require('@/assets/images/Diamond.png'),
+        ],
+      },
+      {
+        'show' : false,
+        'title' : 'Kestoik',
+        'text' : 'It is a better to-do app, similar to GitHub\'s issues system. It also lets you write down all the things you do, see your progress, get a score and get written a journal based on your input in .md!',
+        'images' : [
+          require('@/assets/images/Kestoik.png')
+        ],
+      },
     ],
     formData: {
       contact_number: '',
@@ -214,7 +244,8 @@ export default {
 
             const isFrameInViewport = rect.top >= -rect.height/4 && rect.bottom <= windowHeight + rect.height/4
 
-            this.aboutMe[index].show = isFrameInViewport
+            let framesObjects = [...this.aboutMe, ...this.myProjects]
+            framesObjects[index].show = isFrameInViewport
           }
         });
       }
@@ -306,6 +337,7 @@ export default {
     color: aquamarine;
     overflow: hidden;
     background: rgba(0,0,0,.8);
+    mix-blend-mode: multiply;
     box-shadow: 0px 0px 80px 80px rgba(0,0,0,.8);
     margin-bottom: 80px;
   }
@@ -316,7 +348,7 @@ export default {
     overflow: hidden;
     white-space: nowrap;
     user-select: none;
-    animation: fadeMessage var(--fade-time) forwards;
+    animation: fadeMessage 1s ease-in-out forwards;
   }
   .string {
     writing-mode: vertical-rl;
@@ -324,9 +356,9 @@ export default {
     height: fit-content;
     width: fit-content;
     padding: 0px;
-    margin-left: -10px;
-    margin-right: -10px;
-    transform: translateY(-10px);
+    margin-left: -15px;
+    margin-right: -15px;
+    transform: translateY(-30px);
   }
   .scroll-to-top {
     position: fixed;
@@ -338,12 +370,12 @@ export default {
   }
   .fill-string {
     opacity: 1;
-    animation: fadeLetters var(--fade-time) forwards;
+    animation: fadeLetters 1s ease-in-out forwards;
   }
   .main-string {
     font-size: 28px;
-    animation-delay: var(--fade-time);
-    animation: showLetters 1s forwards;
+    animation-delay: 1s;
+    animation: showLetters 1s ease-in-out forwards;
   }
   @keyframes fadeLetters {
     from {
@@ -356,21 +388,14 @@ export default {
       opacity: 0;
     }
   }
-  @keyframes showLetters {
-    from {
-      font-size: 28px;
-    }
-    to {
-      font-size: 40px;
-      transform: translateY(-20px);
-    }
-  }
   @keyframes fadeMessage {
     from {
-      transform: scale(10);
+      transform: scale(8);
+      gap: 0px;
     }
     to {
-      transform: scale();
+      transform: scale(1);
+      gap: 10px;
     }
   }
   #blob {
@@ -395,6 +420,11 @@ export default {
     z-index: 2;
     backdrop-filter: blur(200px);
   }
+  #contact-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   @keyframes blobAnimation {
     from {
       rotate: 0deg;
@@ -411,6 +441,13 @@ export default {
       width: 80%;
       margin-left: 10%;
     }
+    #banner {
+      height: 200px;
+    }
+    .scroll-to-top {
+      bottom: 10px;
+      right: 10px;
+    }
   }
 
   @media screen and (min-width: 601px) and (max-width: 1024px) {
@@ -418,12 +455,31 @@ export default {
       width: 80%;
       margin-left: 10%;
     }
+    #banner {
+      height: 300px;
+    }
+    .banner-contents {
+      padding-top: 50px;
+    }
   }
 
   @media screen and (min-width: 1025px) {
     #contact-form {
       width: 80%;
       margin-left: 10%;
+    }
+    .frame {
+      width: 80%;
+      margin-left: 10%;
+    }
+    .text-h4 {
+      margin-left: 10%;
+    }
+    #banner {
+      height: 500px;
+    }
+    .banner-contents {
+      padding-top: 140px;
     }
   }
 </style>
