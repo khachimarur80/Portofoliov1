@@ -20,9 +20,17 @@
             {{ data.text }}
           </div>
         </v-card-text>
-        <v-card-actions class="align-self-end">
-          <v-btn variant="outlined">
-            See more
+        <v-card-actions class="align-self-end" v-if="data.more">
+          <v-btn v-if="data.more[0]=='Download'" target="_blank" @click="download" icon  dense>
+            <v-icon>
+              mdi-download
+            </v-icon>
+          </v-btn>
+          <v-btn variant="outlined" :href="data.more[1]" target="_blank" v-else>
+            {{ data.more[0] }}
+          </v-btn>
+          <v-btn variant="outlined" :href="data.repo" v-if="data.repo" target="_blank">
+            Repo
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -58,6 +66,13 @@ export default {
       required: true,
     },
   },
+
+  methods : {
+    download() {
+      const userOS = navigator.platform;
+      alert(userOS)
+    }
+  }
 }
 </script>
 
