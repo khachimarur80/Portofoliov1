@@ -117,7 +117,7 @@ export default {
       width: 100%;
     }
     .one-image.odd {
-      flex-direction: column-reverse;
+      flex-direction: column;
     }
     .one-image.even {
       flex-direction: column;

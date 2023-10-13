@@ -553,6 +553,9 @@ export default {
       bottom: 10px;
       right: 10px;
     }
+    .frame {
+      height: fit-content;
+    }
   }
 
   @media screen and (min-width: 601px) and (max-width: 1024px) {
