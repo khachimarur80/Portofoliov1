@@ -6,6 +6,7 @@
 
     <v-app-bar elevation="0" color="teal">
       <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
       <v-btn @click="scrollToTarget('kei')">
         About Me
       </v-btn>
@@ -19,6 +20,9 @@
         Contact
       </v-btn>
       <v-spacer></v-spacer>
+      <v-btn :href="pdfPath" download>
+        Download CV
+      </v-btn>
     </v-app-bar>
     <v-main @scroll="handleScroll" id="main">
       <div id="banner">
@@ -358,6 +362,11 @@ export default {
     scrollToTop() {
       const mainElement = document.getElementById('main');
       mainElement.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+  },
+  computed: {
+    pdfPath() {
+      return require("@/assets/Kei_CV.pdf").default;
     },
   },
   mounted() {
