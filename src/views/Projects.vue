@@ -100,7 +100,7 @@ export default {
         'images' : [
           require('@/assets/images/Luhmann.png')
         ],
-        'more' : ['See Live', '#'],
+        'more' : ['See More', 'https://khachimarur80.github.io/Luhmann/'],
         'repo' : 'https://github.com/khachimarur80/Luhmann',
       },
       {
@@ -110,7 +110,7 @@ export default {
         'images' : [
           require('@/assets/images/Diamond.png'),
         ],
-        'more' : ['Download', '#'],
+        'more' : ['See More', 'https://khachimarur80.github.io/Diamond/'],
         'repo' : 'https://github.com/khachimarur80/MindMap',
       },
       {
@@ -120,7 +120,7 @@ export default {
         'images' : [
           require('@/assets/images/Koding.png')
         ],
-        'more' : ['See Live', '#'],
+        'more' : ['See More', '#'],
         'repo' : 'https://github.com/khachimarur80/Koding',
       },
       {
@@ -130,7 +130,7 @@ export default {
         'images' : [
           require('@/assets/images/Kestoik.png')
         ],
-        'more' : ['Download', '#'],
+        'more' : ['See More', 'https://khachimarur80.github.io/Kestoik/'],
         'repo' : 'https://github.com/khachimarur80/Kestoik',
       },
       {
@@ -140,7 +140,7 @@ export default {
         'images' : [
           require('@/assets/images/redditYT.png')
         ],
-        'more' : ['See Live', '#'],
+        'more' : ['See More', 'https://khachimarur80.github.io/RedditYT/'],
         'repo' : 'https://github.com/khachimarur80/RedditYT',
       },
       {
@@ -150,7 +150,7 @@ export default {
         'images' : [
           require('@/assets/images/WPapp.png')
         ],
-        'more' : ['See Live', '#'],
+        'more' : ['See More', 'https://khachimarur80.github.io/WPapp/'],
         'repo' : 'https://github.com/khachimarur80/WPapp',
       },
       {
@@ -160,7 +160,7 @@ export default {
         'images' : [
           require('@/assets/images/iTask.png')
         ],
-        'more' : ['See Live', '#'],
+        'more' : ['See Live', 'https://khachimarur80.github.io/iTask/'],
         'repo' : 'https://github.com/khachimarur80/iTask',
       },
     ],

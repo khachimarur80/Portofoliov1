@@ -189,7 +189,9 @@ export default {
       },
     ],
     greeting: [
+      ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
       'H', 'e', 'y', ' ','I', '\'' ,'m', ' ', 'K', 'e', 'i', 
+      ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
       ],
     waitTime: 0,
     charStrings: [],
@@ -238,7 +240,7 @@ export default {
         'images' : [
           require('@/assets/images/Luhmann.png')
         ],
-        'more' : ['See Live', '#'],
+        'more' : ['See More', 'https://khachimarur80.github.io/Luhmann/'],
         'repo' : 'https://github.com/khachimarur80/Luhmann',
       },
       {
@@ -248,7 +250,7 @@ export default {
         'images' : [
           require('@/assets/images/Diamond.png'),
         ],
-        'more' : ['Download', '#'],
+        'more' : ['See More', 'https://khachimarur80.github.io/Diamond/'],
         'repo' : 'https://github.com/khachimarur80/MindMap',
       },
       {
@@ -258,7 +260,7 @@ export default {
         'images' : [
           require('@/assets/images/Koding.png')
         ],
-        'more' : ['See Live', '#'],
+        'more' : ['See More', 'https://khachimarur80.github.io/koding/'],
         'repo' : 'https://github.com/khachimarur80/Koding',
       },
       {
@@ -268,7 +270,7 @@ export default {
         'images' : [
           require('@/assets/images/Kestoik.png')
         ],
-        'more' : ['Download', '#'],
+        'more' : ['See More', 'https://khachimarur80.github.io/Kestoik/'],
         'repo' : 'https://github.com/khachimarur80/Kestoik',
       },
     ],
@@ -381,7 +383,7 @@ export default {
       if (flag) {
         clearInterval(interval)
       }
-    }, 70)
+    }, 120)
     document.documentElement.style.setProperty('--fade-time', .03*this.waitTime/.5+'s');
   },
   created() {
@@ -462,7 +464,7 @@ export default {
     overflow: hidden;
     white-space: nowrap;
     user-select: none;
-    animation: fadeMessage 1s ease-in-out forwards;
+    animation: fadeMessage var(--fade-time) ease-in-out forwards;
   }
   .string {
     writing-mode: vertical-rl;
@@ -470,9 +472,9 @@ export default {
     height: fit-content;
     width: fit-content;
     padding: 0px;
-    margin-left: -15px;
-    margin-right: -15px;
-    transform: translateY(-30px);
+    margin-left: -12px;
+    margin-right: -12px;
+    transform: translateY(-130px);
   }
   .scroll-to-top {
     position: fixed;
@@ -484,12 +486,12 @@ export default {
   }
   .fill-string {
     opacity: 1;
-    animation: fadeLetters 1s ease-in-out forwards;
+    animation: fadeLetters var(--fade-time) ease-in-out forwards;
+    font-size: 30px;
   }
   .main-string {
-    font-size: 28px;
-    animation-delay: 1s;
-    animation: showLetters 1s ease-in-out forwards;
+    font-size: 30px;
+    animation: showLetters var(--fade-time) ease-in-out forwards;
   }
   @keyframes fadeLetters {
     from {
@@ -505,7 +507,7 @@ export default {
   @keyframes fadeMessage {
     from {
       transform: scale(8);
-      gap: 0px;
+      gap: -10px;
     }
     to {
       transform: scale(1);
