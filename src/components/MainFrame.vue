@@ -82,7 +82,7 @@ export default {
     justify-content: center;
     align-items: center;
     gap: 12px;
-    width: 100%;
+    width: 100h;
     opacity: 0;
     transition: opacity 0.5s, transform 0.5s;
     height: 300px;

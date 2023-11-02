@@ -189,9 +189,7 @@ export default {
       },
     ],
     greeting: [
-      ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
       'H', 'e', 'y', ' ','I', '\'' ,'m', ' ', 'K', 'e', 'i', 
-      ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
       ],
     waitTime: 0,
     charStrings: [],
@@ -383,7 +381,7 @@ export default {
       if (flag) {
         clearInterval(interval)
       }
-    }, 120)
+    }, 60)
     document.documentElement.style.setProperty('--fade-time', .03*this.waitTime/.5+'s');
   },
   created() {
@@ -515,8 +513,8 @@ export default {
     }
   }
   #blob {
-    height: 34vmax;
-    aspect-ratio: 1;
+    height: 200px;
+    width: 200px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -526,7 +524,7 @@ export default {
       aquamarine,
       teal
     );
-    animation: blobAnimation 10s infinite;
+    /*animation: blobAnimation 10s infinite;*/
     opacity: 0.8;
   }
   #blur {

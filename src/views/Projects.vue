@@ -178,7 +178,7 @@ export default {
       blob.animate({
         left: event.x + 'px',
         top: event.y + 'px'
-      }, {duration: 3000, fill: 'forwards'})
+      }, {duration: 2000, fill: 'forwards'})
     },
     handleScroll() {
       const mainElement = document.getElementById('main');
@@ -214,6 +214,7 @@ export default {
 </script>
 
 <style>
+  /*
   :root {
     --fade-time: 3s;
   }
@@ -324,5 +325,5 @@ export default {
 
   * {
     scroll-margin-top: 60px;
-  }
+  }*/
 </style>
