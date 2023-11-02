@@ -178,7 +178,7 @@ export default {
       blob.animate({
         left: event.x + 'px',
         top: event.y + 'px'
-      }, {duration: 2000, fill: 'forwards'})
+      }, {duration: 1000, fill: 'forwards'})
     },
     handleScroll() {
       const mainElement = document.getElementById('main');
