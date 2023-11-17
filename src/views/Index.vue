@@ -6,7 +6,6 @@
 
     <v-app-bar elevation="0" color="teal">
       <v-spacer></v-spacer>
-      <v-spacer></v-spacer>
       <v-btn @click="scrollToTarget('kei')">
         About Me
       </v-btn>
@@ -20,23 +19,12 @@
         Contact
       </v-btn>
       <v-spacer></v-spacer>
-      <v-btn :href="pdfPath" download>
-        Download CV
-      </v-btn>
     </v-app-bar>
     <v-main @scroll="handleScroll" id="main">
       <div id="banner">
         <div class="banner-contents">
-          <div v-for="(string, i) in charStrings" :key="i" class="string">
-            <span class="fill-string">
-              {{ string.slice(0, 6)  }}
-            </span>
-            <span class="main-string">
-              {{ string[6] }}
-            </span>
-            <span class="fill-string">
-              {{ string.slice(7, -1) }}
-            </span>
+          <div v-for="(string, i) in charStrings" :key="i" class="string text-h1">
+            {{ string[6] }}
           </div>
         </div>
       </div>
@@ -305,7 +293,7 @@ export default {
       blob.animate({
         left: event.x + 'px',
         top: event.y + 'px'
-      }, {duration: 3000, fill: 'forwards'})
+      }, {duration: 500, fill: 'forwards'})
     },
     submitForm() {
       this.sending = true
@@ -370,6 +358,7 @@ export default {
     },
   },
   mounted() {
+    this.handleScroll()
     const interval = setInterval(()=>{
       let flag = true
       for (let i=0; i<this.charStrings.length; i++) {
@@ -382,7 +371,6 @@ export default {
         clearInterval(interval)
       }
     }, 60)
-    document.documentElement.style.setProperty('--fade-time', .03*this.waitTime/.5+'s');
   },
   created() {
     document.addEventListener('mousemove', this.moveBlob)
@@ -460,19 +448,11 @@ export default {
     display: flex;
     justify-content: center;
     overflow: hidden;
-    white-space: nowrap;
+    align-items: center;
     user-select: none;
-    animation: fadeMessage var(--fade-time) ease-in-out forwards;
   }
   .string {
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    height: fit-content;
-    width: fit-content;
-    padding: 0px;
-    margin-left: -12px;
-    margin-right: -12px;
-    transform: translateY(-130px);
+    min-width: 30px;
   }
   .scroll-to-top {
     position: fixed;
@@ -482,36 +462,8 @@ export default {
     opacity: 0.7;
     z-index: 1000;
   }
-  .fill-string {
-    opacity: 1;
-    animation: fadeLetters var(--fade-time) ease-in-out forwards;
-    font-size: 30px;
-  }
-  .main-string {
-    font-size: 30px;
-    animation: showLetters var(--fade-time) ease-in-out forwards;
-  }
-  @keyframes fadeLetters {
-    from {
-      opacity: 1;
-    }
-    75% {
-      opacity: .8;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-  @keyframes fadeMessage {
-    from {
-      transform: scale(8);
-      gap: -10px;
-    }
-    to {
-      transform: scale(1);
-      gap: 10px;
-    }
-  }
+
+
   #blob {
     height: 200px;
     width: 200px;
@@ -524,7 +476,6 @@ export default {
       aquamarine,
       teal
     );
-    /*animation: blobAnimation 10s infinite;*/
     opacity: 0.8;
   }
   #blur {
@@ -538,17 +489,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  @keyframes blobAnimation {
-    from {
-      rotate: 0deg;
-    }
-    50% {
-      scale: 1 1.5;
-    }
-    to {
-      rotage: 360deg;
-    }
   }
   @media screen and (max-width: 600px) {
     #contact-form {

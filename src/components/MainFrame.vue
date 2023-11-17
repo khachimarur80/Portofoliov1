@@ -42,10 +42,10 @@
           :key="i"
           cols="4"
         >
-          <v-img :src="image" contain></v-img>
+          <v-img :src="image" contain loading="lazy"></v-img>
         </v-col>
       </v-row>
-      <v-img :src="data.images[0]" contain width="100%" height="100%" v-else></v-img>
+      <v-img :src="data.images[0]" contain width="100%" height="100%" loading="lazy" v-else></v-img>
     </div>
   </div>
 </template>
@@ -84,7 +84,7 @@ export default {
     gap: 12px;
     width: 100%;
     opacity: 0;
-    transition: opacity 0.5s, transform 0.5s;
+    transition: opacity 0.2s, transform 0.2s;
     height: 300px;
   }
   .frame-inner-left, .frame-inner-right {
