@@ -1,21 +1,17 @@
 <template>
   <v-app >
-    <div id="blob">
-    </div>
-    <div id="blur"></div>
-
     <v-app-bar elevation="0" color="teal">
       <v-spacer>
       </v-spacer>
       <v-btn href="/">
-        Home
+        Inicio
       </v-btn>
       <v-spacer>
       </v-spacer>
     </v-app-bar>
     <v-main @scroll="handleScroll" id="main">
       <div class="text-h4 py-6 px-3" id="projects">
-        Projects
+        Proyectos
       </div>
       <MainFrame v-for="(point, i) in projects" :key="i" :data="point" :isOdd="i%2==0" :oneImage="point.images.length==1" ref="frames" :data-title="point.title"/>
       
@@ -94,76 +90,77 @@ export default {
     ],
     projects: [
       {
-        'show' : false,
-        'title' : 'Luhmann',
-        'text' : 'It is a platform where people can share their knowledge and work together. Data is stored in a tree-node, where bigger concepts include smaller ones. One cool feature is that uses WebSocket Technology to work simultaneously.',
-        'images' : [
+        'show': false,
+        'title': 'Luhmann',
+        'text': 'Es una plataforma donde las personas pueden compartir sus conocimientos y trabajar juntas. Los datos se almacenan en un nodo de árbol, donde los conceptos más grandes incluyen a los más pequeños. Una característica genial es que utiliza la tecnología WebSocket para trabajar simultáneamente.',
+        'images': [
           require('@/assets/images/Luhmann.png')
         ],
-        'more' : ['See More', 'https://khachimarur80.github.io/Luhmann/'],
-        'repo' : 'https://github.com/khachimarur80/Luhmann',
+        'more': ['Ver Más', 'https://khachimarur80.github.io/Luhmann/'],
+        'repo': 'https://github.com/khachimarur80/Luhmann',
       },
       {
-        'show' : false,
-        'title' : 'Diamond',
-        'text' : 'Desktop application built with Electron.js. It is a simple, yet effective text editor. A text editor for your markdown, with WYSWYG. It is an "Obsidian" copy.',
-        'images' : [
+        'show': false,
+        'title': 'Diamond',
+        'text': 'Aplicación de escritorio construida con Electron.js. Es un editor de texto simple pero efectivo. Un editor de texto para tu markdown, con vista previa en tiempo real. Es una copia de "Obsidian".',
+        'images': [
           require('@/assets/images/Diamond.png'),
         ],
-        'more' : ['See More', 'https://khachimarur80.github.io/Diamond/'],
-        'repo' : 'https://github.com/khachimarur80/MindMap',
+        'more': ['Ver Más', 'https://khachimarur80.github.io/Diamond/'],
+        'repo': 'https://github.com/khachimarur80/MindMap',
       },
       {
-        'show' : false,
-        'title' : 'Koding',
-        'text' : 'It is a platform where CS students share code, tutorials, notes and learn together. More experienced students can teach less experienced users, and earn points. It also includes an online code editor for the default courses!',
-        'images' : [
+        'show': false,
+        'title': 'Koding',
+        'text': 'Es una plataforma donde los estudiantes de informática comparten código, tutoriales, notas y aprenden juntos. Los estudiantes más experimentados pueden enseñar a los usuarios menos experimentados y ganar puntos. ¡También incluye un editor de código en línea para los cursos predeterminados!',
+        'images': [
           require('@/assets/images/Koding.png')
         ],
-        'more' : ['See More', '#'],
-        'repo' : 'https://github.com/khachimarur80/Koding',
+        'more': ['Ver Más', '#'],
+        'repo': 'https://github.com/khachimarur80/Koding',
       },
       {
-        'show' : false,
-        'title' : 'Kestoik',
-        'text' : 'It is a better to-do app, similar to GitHub\'s issues system. It also lets you write down all the things you do, see your progress, get a score and get written a journal based on your input in .md!',
-        'images' : [
+        'show': false,
+        'title': 'Kestoik',
+        'text': 'Es una aplicación de tareas mejorada, similar al sistema de problemas de GitHub. También te permite escribir todas las cosas que haces, ver tu progreso, obtener una puntuación y escribir un diario basado en tus entradas en .md.',
+        'images': [
           require('@/assets/images/Kestoik.png')
         ],
-        'more' : ['See More', 'https://khachimarur80.github.io/Kestoik/'],
-        'repo' : 'https://github.com/khachimarur80/Kestoik',
+        'more': ['Ver Más', 'https://khachimarur80.github.io/Kestoik/'],
+        'repo': 'https://github.com/khachimarur80/Kestoik',
       },
       {
-        'show' : false,
-        'title' : 'RedditYT',
-        'text' : 'Simple app to create Reddit Youtube Shorts videos.',
-        'images' : [
+        'show': false,
+        'title': 'RedditYT',
+        'text': 'Aplicación sencilla para crear videos de Reddit Youtube Shorts.',
+        'images': [
           require('@/assets/images/redditYT.png')
         ],
-        'more' : ['See More', 'https://khachimarur80.github.io/RedditYT/'],
-        'repo' : 'https://github.com/khachimarur80/RedditYT',
+        'more': ['Ver Más', 'https://khachimarur80.github.io/RedditYT/'],
+        'repo': 'https://github.com/khachimarur80/RedditYT',
       },
       {
-        'show' : false,
-        'title' : 'WPapp',
-        'text' : 'Electron.js app that adds an animated wallpaper',
-        'images' : [
+        'show': false,
+        'title': 'WPapp',
+        'text': 'Aplicación Electron.js que añade un fondo de pantalla animado.',
+        'images': [
           require('@/assets/images/WPapp.png')
         ],
-        'more' : ['See More', 'https://khachimarur80.github.io/WPapp/'],
-        'repo' : 'https://github.com/khachimarur80/WPapp',
+        'more': ['Ver Más', 'https://khachimarur80.github.io/WPapp/'],
+        'repo': 'https://github.com/khachimarur80/WPapp',
       },
       {
-        'show' : false,
-        'title' : 'iTask',
-        'text' : 'Simple online task manager.',
-        'images' : [
+        'show': false,
+        'title': 'iTask',
+        'text': 'Gestor de tareas en línea simple.',
+        'images': [
           require('@/assets/images/iTask.png')
         ],
-        'more' : ['See Live', 'https://khachimarur80.github.io/iTask/'],
-        'repo' : 'https://github.com/khachimarur80/iTask',
+        'more': ['Ver en Vivo', 'https://khachimarur80.github.io/iTask/'],
+        'repo': 'https://github.com/khachimarur80/iTask',
       },
     ],
+
   }),
 
   methods: {
@@ -172,13 +169,6 @@ export default {
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: "smooth" });
       }
-    },
-    moveBlob(event) {
-      let blob = document.getElementById('blob')
-      blob.animate({
-        left: event.x + 'px',
-        top: event.y + 'px'
-      }, {duration: 1000, fill: 'forwards'})
     },
     handleScroll() {
       const mainElement = document.getElementById('main');
@@ -208,7 +198,7 @@ export default {
   mounted() {
   },
   created() {
-    document.addEventListener('mousemove', this.moveBlob)
+
   }
 }
 </script>

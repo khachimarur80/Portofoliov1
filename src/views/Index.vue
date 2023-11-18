@@ -1,22 +1,18 @@
 <template>
   <v-app >
-    <div id="blob">
-    </div>
-    <div id="blur"></div>
-
     <v-app-bar elevation="0" color="teal">
       <v-spacer></v-spacer>
       <v-btn @click="scrollToTarget('kei')">
-        About Me
+        Sobre mí
       </v-btn>
       <v-btn @click="scrollToTarget('projects')">
-        Projects
+        Proyectos
       </v-btn>
       <v-btn @click="scrollToTarget('my-github')">
-        My Github
+        Mi Github
       </v-btn>
       <v-btn @click="scrollToTarget('contact')">
-        Contact
+        Contacto
       </v-btn>
       <v-spacer></v-spacer>
     </v-app-bar>
@@ -29,15 +25,15 @@
         </div>
       </div>
       <div class="text-h4 py-6 px-3" id="kei">
-        About Me
+        Sobre mí
       </div>
       <MainFrame v-for="(point, i) in aboutMe" :key="i" :data="point" :isOdd="i%2==0" :oneImage="point.images.length==1" ref="frames" :data-title="point.title"/>
       <div class="text-h4 py-6 px-3" id="projects">
-        Projects
+        Proyectos
       </div>
       <MainFrame v-for="(point, i) in myProjects" :key="i" :data="point" :isOdd="i%2==0" :oneImage="point.images.length==1" ref="frames" :data-title="point.title"/>
       <div class="text-h4 py-6 px-3" id="my-github">
-        My GitHub
+        Mi GitHub
       </div>
       <div class="d-flex flex-column align-center">
         <div class="calendar">
@@ -47,7 +43,7 @@
         <v-img src="https://github-readme-stats.vercel.app/api/top-langs/?username=khachimarur80&theme=vue-dark&card_width=468" width="80%" max-width="500" class="py-3"></v-img>
       </div>
       <div class="text-h4 py-6 px-3" id="contact">
-        Contact
+        Contacto
       </div>
       <v-form id="contact-form" @submit.prevent="submitForm" class="pb-10">
         <v-card width="100%" height="100%" max-width="600" flat class="d-flex flex-column pa-3">
@@ -153,7 +149,7 @@ export default {
   data: () => ({
     sending: false,
     sendColor: 'teal-lighten-2',
-    sendText: 'Send',
+    sendText: 'Enviar',
     socials: [
       {
         href: "mailto:khachimarur80@gmail.com",
@@ -177,23 +173,23 @@ export default {
       },
     ],
     greeting: [
-      'H', 'e', 'y', ' ','I', '\'' ,'m', ' ', 'K', 'e', 'i', 
+      'H', 'o', 'l', 'a', ' ', 's', 'o', 'y', ' ', 'K', 'e', 'i'
       ],
     waitTime: 0,
     charStrings: [],
     aboutMe: [
       {
         'show' : false,
-        'title' : 'What I am',
-        'text' : 'I\'m a first year CS student who lives in Madrid. I enjoy playing the violin, various sports, and of course, coding. I love building and learning stuff!',
+        'title' : 'Quién Soy',
+        'text' : 'Soy estudiante de primer año de Ingeniería Informática en Madrid. Disfruto tocando el violín, practicando diversos deportes y, por supuesto, programando. ¡Me encanta construir y aprender cosas nuevas!',
         'images' : [
           require('@/assets/images/Retiro.jpg')
         ],
       },
       {
         'show' : false,
-        'title' : 'My Skills',
-        'text' : 'My skills are revolved around Web Deb. I\'m fluent in JS, HTML, CSS and Python. I\'m familiar with Node.js, Django, Vue and Vuetify. I\'m currently learning Express.js and Vuex.',
+        'title' : 'Mis Habilidades',
+        'text' : 'Mis habilidades se centran en el desarrollo web. Hablo fluidamente JS, HTML, CSS y Python. Estoy familiarizado con Node.js, Django, Vue y Vuetify. Actualmente estoy aprendiendo Express.js y Vuex.',
         'images' : [
           require('@/assets/images/html5-original.svg'),
           require('@/assets/images/css3-original.svg'),
@@ -210,53 +206,53 @@ export default {
     myProjects: [
       {
         'show' : false,
-        'title' : 'My projects',
-        'text' : 'Here are 3 of my big projects. Feel free to check them on github. I also have other fun projects, click "See More" if you want to see them :D',
+        'title' : 'Mis Proyectos',
+        'text' : 'Aquí tienes tres de mis proyectos más grandes. Siéntete libre de revisarlos en GitHub. También tengo otros proyectos divertidos, haz clic en "Ver Más" si quieres conocerlos :D',
         'images' : [
           require('@/assets/images/Logo.png')
         ],
         'more' : [
-          'Other projects', '/projects'
+          'Otros proyectos', '/projects'
         ],
       },
       {
         'show' : false,
         'title' : 'Luhmann',
-        'text' : 'It is a platform where people can share their knowledge and work together. Data is stored in a tree-node, where bigger concepts include smaller ones. One cool feature is that uses WebSocket Technology to work simultaneously.',
+        'text' : 'Es una plataforma donde las personas pueden compartir conocimientos y trabajar juntas. Los datos se almacenan en un árbol de nodos, donde los conceptos más grandes incluyen a los más pequeños. Una característica genial es que utiliza la tecnología WebSocket para trabajar simultáneamente.',
         'images' : [
           require('@/assets/images/Luhmann.png')
         ],
-        'more' : ['See More', 'https://khachimarur80.github.io/Luhmann/'],
+        'more' : ['Ver Más', 'https://khachimarur80.github.io/Luhmann/'],
         'repo' : 'https://github.com/khachimarur80/Luhmann',
       },
       {
         'show' : false,
         'title' : 'Diamond',
-        'text' : 'Desktop application built with Electron.js. It is a simple, yet effective text editor. A text editor for your markdown, with WYSWYG. It is an "Obsidian" copy.',
+        'text' : 'Aplicación de escritorio construida con Electron.js. Es un editor de texto simple pero efectivo. Un editor de texto para tu markdown, con vista previa en tiempo real. Es una copia de "Obsidian".',
         'images' : [
           require('@/assets/images/Diamond.png'),
         ],
-        'more' : ['See More', 'https://khachimarur80.github.io/Diamond/'],
+        'more' : ['Ver Más', 'https://khachimarur80.github.io/Diamond/'],
         'repo' : 'https://github.com/khachimarur80/MindMap',
       },
       {
         'show' : false,
         'title' : 'Koding',
-        'text' : 'It is a platform where CS students share code, tutorials, notes and learn together. More experienced students can teach less experienced users, and earn points. It also includes an online code editor for the default courses!',
+        'text' : 'Es una plataforma donde los estudiantes de informática comparten código, tutoriales, notas y aprenden juntos. Los estudiantes más experimentados pueden enseñar a los usuarios menos experimentados y ganar puntos. ¡También incluye un editor de código en línea para los cursos predeterminados!',
         'images' : [
           require('@/assets/images/Koding.png')
         ],
-        'more' : ['See More', 'https://khachimarur80.github.io/koding/'],
+        'more' : ['Ver Más', 'https://khachimarur80.github.io/koding/'],
         'repo' : 'https://github.com/khachimarur80/Koding',
       },
       {
         'show' : false,
         'title' : 'Kestoik',
-        'text' : 'It is a better to-do app, similar to GitHub\'s issues system. It also lets you write down all the things you do, see your progress, get a score and get written a journal based on your input in .md!',
+        'text' : 'Es una aplicación de tareas mejorada, similar al sistema de problemas de GitHub. También te permite escribir todas las cosas que haces, ver tu progreso, obtener una puntuación y escribir un diario basado en tus entradas en .md.',
         'images' : [
           require('@/assets/images/Kestoik.png')
         ],
-        'more' : ['See More', 'https://khachimarur80.github.io/Kestoik/'],
+        'more' : ['Ver Más', 'https://khachimarur80.github.io/Kestoik/'],
         'repo' : 'https://github.com/khachimarur80/Kestoik',
       },
     ],
@@ -288,13 +284,6 @@ export default {
         targetElement.scrollIntoView({ behavior: "smooth" });
       }
     },
-    moveBlob(event) {
-      let blob = document.getElementById('blob')
-      blob.animate({
-        left: event.x + 'px',
-        top: event.y + 'px'
-      }, {duration: 500, fill: 'forwards'})
-    },
     submitForm() {
       this.sending = true
       const vm = this
@@ -304,11 +293,11 @@ export default {
       .then(function () {
         document.getElementById('contact-form').reset();
         vm.sendColor = 'success'
-        vm.sendText = 'Sended!'
+        vm.sendText = 'Enviado!'
 
         setTimeout(()=>{
           vm.sendColor = 'teal-lighten-2'
-          vm.sendText = 'Send'
+          vm.sendText = 'Enviar'
         }, 3000)
 
         vm.sending = false
@@ -320,7 +309,7 @@ export default {
 
         setTimeout(()=>{
           vm.sendColor = 'teal-lighten-2'
-          vm.sendText = 'Send'
+          vm.sendText = 'Enviar'
         }, 3000)
 
         vm.sending = false
@@ -373,8 +362,6 @@ export default {
     }, 60)
   },
   created() {
-    document.addEventListener('mousemove', this.moveBlob)
-
     let charStrings = []
     let indexes = []
 
@@ -461,22 +448,6 @@ export default {
     transition: opacity 0.3s ease-in-out;
     opacity: 0.7;
     z-index: 1000;
-  }
-
-
-  #blob {
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
-    border-radius: 50%;
-    background: linear-gradient(
-      aquamarine,
-      teal
-    );
-    opacity: 0.8;
   }
   #blur {
     height: 100%;
