@@ -342,9 +342,6 @@ export default {
     },
   },
   computed: {
-    pdfPath() {
-      return require("@/assets/Kei_CV.pdf").default;
-    },
   },
   mounted() {
     this.handleScroll()
