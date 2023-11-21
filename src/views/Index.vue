@@ -382,7 +382,7 @@ export default {
             const rect = frame.$el.getBoundingClientRect();
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-            const isFrameInViewport = rect.top >= -rect.height/10 && rect.bottom <= windowHeight + rect.height/10
+            const isFrameInViewport = rect.top >= -rect.height/2 && rect.bottom <= windowHeight + rect.height/2
 
             let framesObjects = [...this.aboutMe, ...this.myProjects]
             framesObjects[index].show = isFrameInViewport
