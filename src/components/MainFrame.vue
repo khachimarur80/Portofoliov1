@@ -15,7 +15,7 @@
             {{ data.title }}
           </div>
         </v-card-title>
-        <v-card-text>
+        <v-card-text class="d-flex justify-center align-center">
           <div class="text-body-1">
             {{ data.text }}
           </div>
@@ -41,11 +41,11 @@
           v-for="(image, i) in data.images.slice(0, 9)"
           :key="i"
           cols="4"
-        >
-          <v-img :src="image" contain loading="lazy"></v-img>
+        > 
+          <v-img :src="image.image"  :lazy-src="image.lazy" contain loading="lazy"></v-img>
         </v-col>
       </v-row>
-      <v-img :src="data.images[0]" contain width="100%" height="100%" loading="lazy" v-else></v-img>
+      <v-img :src="data.images[0].image" :lazy-src="data.images[0].lazy" contain width="100%" height="100%" loading="lazy" v-else></v-img>
     </div>
   </div>
 </template>
@@ -111,7 +111,7 @@ export default {
 
   @media screen and (max-width: 600px) {
     .frame {
-      max-height: 600px;
+      height: 600px;
     }
     .frame-inner-left, .frame-inner-right {
       width: 100%;
@@ -126,7 +126,7 @@ export default {
 
   @media screen and (min-width: 601px) and (max-width: 1024px) {
     .frame {
-      max-height: 300px;
+      height: 400px;
     }
   }
 

@@ -2,24 +2,33 @@
   <v-app >
     <v-app-bar elevation="0" color="teal">
       <v-spacer></v-spacer>
-      <v-btn @click="scrollToTarget('kei')">
-        Sobre mí
+
+      <v-btn v-if="isSmallScreen" @click="scrollToTarget('kei')" height="32" width="32">
+        <v-icon size="32">mdi-account</v-icon>
       </v-btn>
-      <v-btn @click="scrollToTarget('projects')">
-        Proyectos
+      <v-btn v-else @click="scrollToTarget('kei')">Sobre mí</v-btn>
+
+      <v-btn v-if="isSmallScreen" @click="scrollToTarget('projects')" height="32" width="32">
+        <v-icon size="32">mdi-briefcase</v-icon>
       </v-btn>
-      <v-btn @click="scrollToTarget('my-github')">
-        Mi Github
+      <v-btn v-else @click="scrollToTarget('projects')">Proyectos</v-btn>
+
+      <v-btn v-if="isSmallScreen" @click="scrollToTarget('my-github')" height="32" width="32">
+        <v-icon size="32">mdi-github</v-icon>
       </v-btn>
-      <v-btn @click="scrollToTarget('contact')">
-        Contacto
+      <v-btn v-else @click="scrollToTarget('my-github')">Mi Github</v-btn>
+
+      <v-btn v-if="isSmallScreen" @click="scrollToTarget('contact')" height="32" width="32">
+        <v-icon size="32">mdi-email</v-icon>
       </v-btn>
+      <v-btn v-else @click="scrollToTarget('contact')">Contacto</v-btn>
+
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-main @scroll="handleScroll" id="main">
       <div id="banner">
         <div class="banner-contents">
-          <div v-for="(string, i) in charStrings" :key="i" class="string text-h1">
+          <div v-for="(string, i) in charStrings" :key="i" class="string">
             {{ string[6] }}
           </div>
         </div>
@@ -153,22 +162,22 @@ export default {
     socials: [
       {
         href: "mailto:khachimarur80@gmail.com",
-        icon: require("@/assets/images/gmail.png"),
+        icon: require("@/assets/images/gmail.webp"),
         alt: "Gmail icon",
       },
       {
         href: "https://github.com/khachimarur80",
-        icon: require("@/assets/images/github.png"),
+        icon: require("@/assets/images/github.webp"),
         alt: "GitHub icon",
       },
       {
         href: "https://linkedin.com/redirect-here",
-        icon: require("@/assets/images/linkedin.png"),
+        icon: require("@/assets/images/linkedin.webp"),
         alt: "LinkedIn icon",
       },
       {
         href: "https://instagram.com/krhachimaru",
-        icon: require("@/assets/images/instagram.png"),
+        icon: require("@/assets/images/instagram.webp"),
         alt: "Instagram icon",
       },
     ],
@@ -183,7 +192,10 @@ export default {
         'title' : 'Quién Soy',
         'text' : 'Soy estudiante de primer año de Ingeniería Informática en Madrid. Disfruto tocando el violín, practicando diversos deportes y, por supuesto, programando. ¡Me encanta construir y aprender cosas nuevas!',
         'images' : [
-          require('@/assets/images/Retiro.jpg')
+          {
+            image: require('@/assets/images/Retiro.webp'),
+            lazy: require('@/assets/images/Retiro-lazy.webp'),
+          }
         ],
       },
       {
@@ -191,15 +203,42 @@ export default {
         'title' : 'Mis Habilidades',
         'text' : 'Mis habilidades se centran en el desarrollo web. Hablo fluidamente JS, HTML, CSS y Python. Estoy familiarizado con Node.js, Django, Vue y Vuetify. Actualmente estoy aprendiendo Express.js y Vuex.',
         'images' : [
-          require('@/assets/images/html5-original.svg'),
-          require('@/assets/images/css3-original.svg'),
-          require('@/assets/images/python-original.svg'),
-          require('@/assets/images/django-plain.svg'),
-          require('@/assets/images/javascript-plain.svg'),
-          require('@/assets/images/vuejs-original.svg'),
-          require('@/assets/images/vuetify-original.svg'),
-          require('@/assets/images/nodejs-original.svg'),
-          require('@/assets/images/electron-original.svg'),
+          {
+            image : require('@/assets/images/html5-original.webp'),
+            lazy: require('@/assets/images/html5-original-lazy.webp')
+          },
+          {
+            image : require('@/assets/images/css3-original.webp'),
+            lazy: require('@/assets/images/css3-original-lazy.webp')
+          },
+          {
+            image : require('@/assets/images/python-original.webp'),
+            lazy: require('@/assets/images/python-original-lazy.webp'),
+          },
+          {
+            image : require('@/assets/images/django-plain.webp'),
+            lazy: require('@/assets/images/django-plain-lazy.webp'),
+          },
+          {
+            image : require('@/assets/images/javascript-plain.webp'),
+            lazy: require('@/assets/images/javascript-plain-lazy.webp'),
+          },
+          {
+            image : require('@/assets/images/vuejs-original.webp'),
+            lazy: require('@/assets/images/vuejs-original-lazy.webp'),
+          },
+          {
+            image : require('@/assets/images/vuetify-original.webp'),
+            lazy: require('@/assets/images/vuetify-original-lazy.webp'),
+          },
+          {
+            image : require('@/assets/images/nodejs-original.webp'),
+            lazy: require('@/assets/images/nodejs-original-lazy.webp'),
+          },
+          {
+            image : require('@/assets/images/electron-original.webp'),
+            lazy: require('@/assets/images/electron-original-lazy.webp')
+          }
         ],
       }
     ],
@@ -209,7 +248,10 @@ export default {
         'title' : 'Mis Proyectos',
         'text' : 'Aquí tienes tres de mis proyectos más grandes. Siéntete libre de revisarlos en GitHub. También tengo otros proyectos divertidos, haz clic en "Ver Más" si quieres conocerlos :D',
         'images' : [
-          require('@/assets/images/Logo.png')
+          {
+            image: require('@/assets/images/Logo.webp'),
+            lazy: require('@/assets/images/Logo-lazy.webp'),
+          }
         ],
         'more' : [
           'Otros proyectos', '/projects'
@@ -220,7 +262,10 @@ export default {
         'title' : 'Luhmann',
         'text' : 'Es una plataforma donde las personas pueden compartir conocimientos y trabajar juntas. Los datos se almacenan en un árbol de nodos, donde los conceptos más grandes incluyen a los más pequeños. Una característica genial es que utiliza la tecnología WebSocket para trabajar simultáneamente.',
         'images' : [
-          require('@/assets/images/Luhmann.png')
+          {
+            image: require('@/assets/images/Luhmann.webp'),
+            lazy: require('@/assets/images/Luhmann-lazy.webp'),
+          }
         ],
         'more' : ['Ver Más', 'https://khachimarur80.github.io/Luhmann/'],
         'repo' : 'https://github.com/khachimarur80/Luhmann',
@@ -230,7 +275,10 @@ export default {
         'title' : 'Diamond',
         'text' : 'Aplicación de escritorio construida con Electron.js. Es un editor de texto simple pero efectivo. Un editor de texto para tu markdown, con vista previa en tiempo real. Es una copia de "Obsidian".',
         'images' : [
-          require('@/assets/images/Diamond.png'),
+          {
+            image: require('@/assets/images/Diamond.webp'),
+            lazy: require('@/assets/images/Diamond-lazy.webp'),
+          }
         ],
         'more' : ['Ver Más', 'https://khachimarur80.github.io/Diamond/'],
         'repo' : 'https://github.com/khachimarur80/MindMap',
@@ -240,7 +288,10 @@ export default {
         'title' : 'Koding',
         'text' : 'Es una plataforma donde los estudiantes de informática comparten código, tutoriales, notas y aprenden juntos. Los estudiantes más experimentados pueden enseñar a los usuarios menos experimentados y ganar puntos. ¡También incluye un editor de código en línea para los cursos predeterminados!',
         'images' : [
-          require('@/assets/images/Koding.png')
+          {
+            image: require('@/assets/images/Koding.webp'),
+            lazy: require('@/assets/images/Koding-lazy.webp'),
+          }
         ],
         'more' : ['Ver Más', 'https://khachimarur80.github.io/koding/'],
         'repo' : 'https://github.com/khachimarur80/Koding',
@@ -250,7 +301,10 @@ export default {
         'title' : 'Kestoik',
         'text' : 'Es una aplicación de tareas mejorada, similar al sistema de problemas de GitHub. También te permite escribir todas las cosas que haces, ver tu progreso, obtener una puntuación y escribir un diario basado en tus entradas en .md.',
         'images' : [
-          require('@/assets/images/Kestoik.png')
+          {
+            image: require('@/assets/images/Kestoik.webp'),
+            lazy: require('@/assets/images/Kestoik-lazy.webp'),
+          }
         ],
         'more' : ['Ver Más', 'https://khachimarur80.github.io/Kestoik/'],
         'repo' : 'https://github.com/khachimarur80/Kestoik',
@@ -328,7 +382,7 @@ export default {
             const rect = frame.$el.getBoundingClientRect();
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-            const isFrameInViewport = rect.top >= -rect.height/4 && rect.bottom <= windowHeight + rect.height/4
+            const isFrameInViewport = rect.top >= -rect.height/10 && rect.bottom <= windowHeight + rect.height/10
 
             let framesObjects = [...this.aboutMe, ...this.myProjects]
             framesObjects[index].show = isFrameInViewport
@@ -342,6 +396,9 @@ export default {
     },
   },
   computed: {
+    isSmallScreen() {
+      return window.innerWidth <= 600;
+    },
   },
   mounted() {
     this.handleScroll()
@@ -435,9 +492,6 @@ export default {
     align-items: center;
     user-select: none;
   }
-  .string {
-    min-width: 30px;
-  }
   .scroll-to-top {
     position: fixed;
     bottom: 20px;
@@ -445,6 +499,9 @@ export default {
     transition: opacity 0.3s ease-in-out;
     opacity: 0.7;
     z-index: 1000;
+  }
+  .string {
+    text-align: center !important;
   }
   #blur {
     height: 100%;
@@ -466,6 +523,10 @@ export default {
     #banner {
       height: 200px;
     }
+    .string {
+      font-size: 30px;
+      width: 20px !important;
+    }
     .scroll-to-top {
       bottom: 10px;
       right: 10px;
@@ -482,6 +543,10 @@ export default {
     }
     #banner {
       height: 300px;
+    }
+    .string {
+      font-size: 50px;
+      width: 35px !important;
     }
     .banner-contents {
       padding-top: 50px;
@@ -505,6 +570,10 @@ export default {
     }
     .banner-contents {
       padding-top: 140px;
+    }
+    .string {
+      font-size: 80px;
+      width: 60px !important;
     }
   }
 

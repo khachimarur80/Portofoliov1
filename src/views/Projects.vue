@@ -69,22 +69,22 @@ export default {
     socials: [
       {
         href: "mailto:khachimarur80@gmail.com",
-        icon: require("@/assets/images/gmail.png"),
+        icon: require("@/assets/images/gmail.webp"),
         alt: "Gmail icon",
       },
       {
         href: "https://github.com/khachimarur80",
-        icon: require("@/assets/images/github.png"),
+        icon: require("@/assets/images/github.webp"),
         alt: "GitHub icon",
       },
       {
         href: "https://linkedin.com/redirect-here",
-        icon: require("@/assets/images/linkedin.png"),
+        icon: require("@/assets/images/linkedin.webp"),
         alt: "LinkedIn icon",
       },
       {
         href: "https://instagram.com/krhachimaru",
-        icon: require("@/assets/images/instagram.png"),
+        icon: require("@/assets/images/instagram.webp"),
         alt: "Instagram icon",
       },
     ],
@@ -94,7 +94,10 @@ export default {
         'title': 'Luhmann',
         'text': 'Es una plataforma donde las personas pueden compartir sus conocimientos y trabajar juntas. Los datos se almacenan en un nodo de árbol, donde los conceptos más grandes incluyen a los más pequeños. Una característica genial es que utiliza la tecnología WebSocket para trabajar simultáneamente.',
         'images': [
-          require('@/assets/images/Luhmann.png')
+          {
+            image : require('@/assets/images/Luhmann.webp'),
+            lazy: require('@/assets/images/Luhmann-lazy.webp')
+          }
         ],
         'more': ['Ver Más', 'https://khachimarur80.github.io/Luhmann/'],
         'repo': 'https://github.com/khachimarur80/Luhmann',
@@ -104,7 +107,10 @@ export default {
         'title': 'Diamond',
         'text': 'Aplicación de escritorio construida con Electron.js. Es un editor de texto simple pero efectivo. Un editor de texto para tu markdown, con vista previa en tiempo real. Es una copia de "Obsidian".',
         'images': [
-          require('@/assets/images/Diamond.png'),
+          {
+            image : require('@/assets/images/Diamond.webp'),
+            lazy: require('@/assets/images/Diamond-lazy.webp')
+          }
         ],
         'more': ['Ver Más', 'https://khachimarur80.github.io/Diamond/'],
         'repo': 'https://github.com/khachimarur80/MindMap',
@@ -114,7 +120,10 @@ export default {
         'title': 'Koding',
         'text': 'Es una plataforma donde los estudiantes de informática comparten código, tutoriales, notas y aprenden juntos. Los estudiantes más experimentados pueden enseñar a los usuarios menos experimentados y ganar puntos. ¡También incluye un editor de código en línea para los cursos predeterminados!',
         'images': [
-          require('@/assets/images/Koding.png')
+          {
+            image : require('@/assets/images/Koding.webp'),
+            lazy: require('@/assets/images/Koding-lazy.webp')
+          }
         ],
         'more': ['Ver Más', '#'],
         'repo': 'https://github.com/khachimarur80/Koding',
@@ -124,7 +133,10 @@ export default {
         'title': 'Kestoik',
         'text': 'Es una aplicación de tareas mejorada, similar al sistema de problemas de GitHub. También te permite escribir todas las cosas que haces, ver tu progreso, obtener una puntuación y escribir un diario basado en tus entradas en .md.',
         'images': [
-          require('@/assets/images/Kestoik.png')
+          {
+            image : require('@/assets/images/Kestoik.webp'),
+            lazy: require('@/assets/images/Kestoik-lazy.webp')
+          }
         ],
         'more': ['Ver Más', 'https://khachimarur80.github.io/Kestoik/'],
         'repo': 'https://github.com/khachimarur80/Kestoik',
@@ -134,7 +146,10 @@ export default {
         'title': 'RedditYT',
         'text': 'Aplicación sencilla para crear videos de Reddit Youtube Shorts.',
         'images': [
-          require('@/assets/images/redditYT.png')
+          {
+            image : require('@/assets/images/redditYT.webp'),
+            lazy: require('@/assets/images/redditYT-lazy.webp')
+          }
         ],
         'more': ['Ver Más', 'https://khachimarur80.github.io/RedditYT/'],
         'repo': 'https://github.com/khachimarur80/RedditYT',
@@ -144,7 +159,10 @@ export default {
         'title': 'WPapp',
         'text': 'Aplicación Electron.js que añade un fondo de pantalla animado.',
         'images': [
-          require('@/assets/images/WPapp.png')
+          {
+            image : require('@/assets/images/WPapp.webp'),
+            lazy: require('@/assets/images/WPapp-lazy.webp')
+          }
         ],
         'more': ['Ver Más', 'https://khachimarur80.github.io/WPapp/'],
         'repo': 'https://github.com/khachimarur80/WPapp',
@@ -154,7 +172,10 @@ export default {
         'title': 'iTask',
         'text': 'Gestor de tareas en línea simple.',
         'images': [
-          require('@/assets/images/iTask.png')
+          {
+            image : require('@/assets/images/iTask.webp'),
+            lazy: require('@/assets/images/iTask-lazy.webp')
+          }
         ],
         'more': ['Ver en Vivo', 'https://khachimarur80.github.io/iTask/'],
         'repo': 'https://github.com/khachimarur80/iTask',
@@ -182,9 +203,9 @@ export default {
             const rect = frame.$el.getBoundingClientRect();
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-            const isFrameInViewport = rect.top >= -rect.height/4 && rect.bottom <= windowHeight + rect.height/4
+            const isFrameInViewport = rect.top >= -rect.height/6 && rect.bottom <= windowHeight + rect.height/6
 
-            let framesObjects =  this.projects
+            let framesObjects = [...this.aboutMe, ...this.myProjects]
             framesObjects[index].show = isFrameInViewport
           }
         });
@@ -196,9 +217,12 @@ export default {
     },
   },
   mounted() {
+    this.handleScroll()
   },
-  created() {
-
+  computed: {
+    isSmallScreen() {
+      return window.innerWidth <= 600;
+    }
   }
 }
 </script>
