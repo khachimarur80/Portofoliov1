@@ -205,7 +205,7 @@ export default {
 
             const isFrameInViewport = rect.top >= -rect.height/6 && rect.bottom <= windowHeight + rect.height/6
 
-            let framesObjects = [...this.aboutMe, ...this.myProjects]
+            let framesObjects = this.projects
             framesObjects[index].show = isFrameInViewport
           }
         });
