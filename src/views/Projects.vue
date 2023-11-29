@@ -113,7 +113,7 @@ export default {
           }
         ],
         'more': ['Ver Más', 'https://khachimarur80.github.io/Diamond/'],
-        'repo': 'https://github.com/khachimarur80/MindMap',
+        'repo': 'https://github.com/khachimarur80/Diamond',
       },
       {
         'show': false,
@@ -125,7 +125,7 @@ export default {
             lazy: require('@/assets/images/Koding-lazy.webp')
           }
         ],
-        'more': ['Ver Más', '#'],
+        'more': ['Ver Más', 'https://khachimarur80.github.io/Koding/'],
         'repo': 'https://github.com/khachimarur80/Koding',
       },
       {

@@ -281,7 +281,7 @@ export default {
           }
         ],
         'more' : ['Ver Más', 'https://khachimarur80.github.io/Diamond/'],
-        'repo' : 'https://github.com/khachimarur80/MindMap',
+        'repo' : 'https://github.com/khachimarur80/Diamond',
       },
       {
         'show' : false,
